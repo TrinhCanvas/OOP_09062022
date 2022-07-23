@@ -214,49 +214,5 @@ class Website1(Base):
 			self.register(i)
 
 
-class Website2(Base):
-	def __init__(self):
-		super().__init__()
-
-	def website(self):
-		self.go_page('https://www.nhaccuatui.com/')
-
-	def log_in(self):
-		self.click((By.XPATH, "//*[@id='btnShowBoxLogin']"))
-		self.sendkey((By.XPATH, "//*[@id='uname']"),"hoathuytinh1999")
-		self.sendkey((By.XPATH, "//*[@id='password']"), "12345678")
-
-# click Đăng nhập
-		self.click((By.XPATH, "//*[@class='btn btn_login_submit']"))
-
-	def listen_music(self):
-		self.click((By.XPATH, "//*[@id='menuTop']/li[3]"))
-		self.click((By.XPATH, "/html/body/div[3]/div[2]/div/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/div[3]/a[1]"))
-
-	def clicktotab(self):
-		element = self.get_element(1,(By.XPATH, "//*[@id='menuTop']/li[5]/a"))
-		action = ActionChains(self.driver)
-		action.key_down(Keys.CONTROL).click(element).key_up(Keys.CONTROL).perform()
-		time.sleep(3)
-
-# chuyển tab và mở 1 bài nhạc
-		self.driver.switch_to.window(self.driver.window_handles[1])
-		self.click((By.XPATH, "//*[@class='list_album tag']/ul/li[12]"))
 
 
-
-
-	def web2_action(self):
-		self.website()
-		self.log_in()
-		self.listen_music()
-		self.clicktotab()
-		self.next_time()
-
-
-
-
-if __name__ == '__main__':
-
-	web2 = Website2()
-	web2.web2_action()
