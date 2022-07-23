@@ -243,14 +243,6 @@ class Website2(Base):
 		self.driver.switch_to.window(self.driver.window_handles[1])
 		self.click((By.XPATH, "//*[@class='list_album tag']/ul/li[12]"))
 
-# Tua bài hát
-	def next_time(self):
-		action = ActionChains(self.driver)
-		element = self.get_element(1,(By.XPATH, "//*[@id='timeSliderflashPlayer']"))
-		action.drag_and_drop_by_offset(element, 200, 100)
-		element.click()
-		time.sleep(10)
-		self.driver.close()
 
 
 
@@ -265,8 +257,6 @@ class Website2(Base):
 
 
 if __name__ == '__main__':
-	# web1 = Website1()
-	# web1.register()
 
 	web2 = Website2()
 	web2.web2_action()
